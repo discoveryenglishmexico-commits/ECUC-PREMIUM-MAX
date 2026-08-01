@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela Culinaria Creativa (ECUC) - Academia de Capacitación Culinaria</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae2fd',
+                            300: '#7cc8fc',
+                            400: '#38acf8',
+                            500: '#0f2b5c', /* Azul ECUC Primario */
+                            600: '#0b1f44', /* Azul ECUC Oscuro */
+                            700: '#07152e',
+                            800: '#040b19',
+                            900: '#02050b',
+                        },
+                        accent: {
+                            50: '#fdfbeb',
+                            100: '#fbf3c8',
+                            200: '#f6e492',
+                            300: '#f0ce53',
+                            400: '#eab825',
+                            500: '#d4af37', /* Dorado de realce */
+                            600: '#b08b26',
+                            700: '#8c681e',
+                            800: '#6f511a',
+                            900: '#5c4217',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Info Bar -->
+    <div class="bg-brand-600 text-white text-xs py-2 px-4 border-b border-brand-700">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1"><i class="fa-solid fa-phone text-accent-500"></i> (55) 2251 2549</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-location-dot text-accent-500"></i> Zapopan, Jalisco</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://www.facebook.com/share/1CZqtULyPj/" target="_blank" class="hover:text-accent-500 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/gastromex_culinaria" target="_blank" class="hover:text-accent-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <span class="text-accent-500 font-semibold">¡Nacidos para ser exitosos!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-600 to-brand-500 rounded-full flex items-center justify-center text-white font-serif font-bold text-xl shadow-md border-2 border-accent-500">
+                        EC
+                    </div>
+                    <div>
+                        <span class="block text-lg font-serif font-extrabold tracking-wide text-brand-600">ESCUELA CULINARIA</span>
+                        <span class="block text-xs font-semibold tracking-widest text-accent-600">CREATIVA • ECUC</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-700">
+                    <a href="#" class="hover:text-brand-500 transition-colors font-semibold border-b-2 border-brand-500 pb-1">Inicio</a>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 hover:text-brand-500 transition-colors pb-1">
+                            Oferta Educativa <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="#diplomados" class="block px-4 py-2 hover:bg-brand-50 hover:text-brand-500 transition-colors">Diplomados Presenciales</a>
+                            <a href="#workshops" class="block px-4 py-2 hover:bg-brand-50 hover:text-brand-500 transition-colors">Workshops Online</a>
+                        </div>
+                    </div>
+                    <a href="#acerca" class="hover:text-brand-500 transition-colors pb-1">Nosotros</a>
+                    <a href="#contacto" class="hover:text-brand-500 transition-colors pb-1">Contacto</a>
+                </nav>
+
+                <!-- CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.link/i7dtul" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-brand-600 font-bold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm border border-accent-400">
+                        <i class="fa-solid fa-phone"></i> LLAMAR AHORA
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-brand-500 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3 shadow-lg">
+            <a href="#" class="block text-brand-500 font-bold py-2 border-b border-gray-50">Inicio</a>
+            <a href="#diplomados" class="block text-gray-700 hover:text-brand-500 py-2 border-b border-gray-50">Diplomados Presenciales</a>
+            <a href="#workshops" class="block text-gray-700 hover:text-brand-500 py-2 border-b border-gray-50">Workshops Online</a>
+            <a href="#acerca" class="block text-gray-700 hover:text-brand-500 py-2 border-b border-gray-50">Nosotros</a>
+            <a href="#contacto" class="block text-gray-700 hover:text-brand-500 py-2">Contacto</a>
+            <a href="https://wa.link/i7dtul" target="_blank" class="flex justify-center items-center gap-2 bg-accent-500 text-brand-600 font-bold py-3 rounded-xl w-full">
+                <i class="fa-solid fa-phone"></i> LLAMAR AHORA
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-gray-900 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1600');"></div>
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-800/80 to-transparent"></div>
+
+        <!-- Content -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-white z-10 w-full">
+            <div class="max-w-2xl">
+                <span class="inline-block bg-accent-500 text-brand-600 text-xs uppercase tracking-widest font-extrabold px-3 py-1.5 rounded-full mb-6 border border-accent-400">
+                    ACADEMIA DE CAPACITACIÓN CULINARIA
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-black tracking-tight leading-none mb-6">
+                    ¡Nacidos para ser <span class="text-accent-500">exitosos!</span>
+                </h1>
+                <p class="text-base sm:text-lg text-gray-200 mb-8 leading-relaxed">
+                    Aprende las técnicas más sofisticadas de la cocina profesional con programas avalados, instructores de primer nivel y un entorno culinario diseñado para el éxito.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.link/i7dtul" target="_blank" class="inline-flex justify-center items-center gap-2 bg-accent-500 hover:bg-accent-600 text-brand-600 font-extrabold px-8 py-4 rounded-full shadow-lg hover:shadow-accent-500/20 transition-all transform hover:-translate-y-0.5 text-base border border-accent-400">
+                        CONTÁCTANOS <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#oferta" class="inline-flex justify-center items-center gap-2 bg-transparent hover:bg-white/10 text-white font-extrabold px-8 py-4 rounded-full border-2 border-white/80 hover:border-white transition-all transform hover:-translate-y-0.5 text-base">
+                        VER OFERTA EDUCATIVA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Oferta de Valor -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-72 h-72 bg-accent-100 rounded-3xl -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800" alt="Gastronomía Premium" class="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3] border-4 border-white">
+                    <div class="absolute -bottom-6 -right-6 bg-brand-500 text-white p-6 rounded-2xl shadow-xl max-w-xs border-b-4 border-accent-500">
+                        <p class="font-serif italic text-lg text-accent-200">"El arte culinario dominado desde el rigor técnico."</p>
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-0.5 bg-accent-500"></div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-accent-600">NUESTRA OFERTA DE VALOR</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-600 leading-tight">
+                        Capacitación culinaria de excelencia para transformar tu pasión
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed text-base">
+                        En <strong>Escuela Culinaria Creativa (ECUC)</strong>, nos apasiona llevar la experiencia culinaria directamente a tu cocina, brindándote la oportunidad de aprender, crecer y dominar el arte de la gastronomía desde la comodidad de tu hogar.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 pt-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-500 shrink-0">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-600 text-sm">PLAN DE ESTUDIOS AVALADO</h4>
+                                <p class="text-xs text-gray-500 mt-1">Garantía académica oficial y de alta exigencia.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-500 shrink-0">
+                                <i class="fa-solid fa-user-tie text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-600 text-sm">INSTRUCTORES CAPACITADOS</h4>
+                                <p class="text-xs text-gray-500 mt-1">Chefs activos, docentes y consultores certificados.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-500 shrink-0">
+                                <i class="fa-solid fa-award text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-600 text-sm">ORGANISMO CERTIFICADO</h4>
+                                <p class="text-xs text-gray-500 mt-1">Certificaciones que validad tu talento real.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center text-brand-500 shrink-0">
+                                <i class="fa-solid fa-calendar-plus text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-600 text-sm">NUEVOS CURSOS SEMANALES</h4>
+                                <p class="text-xs text-gray-500 mt-1">Formación y actualización de vanguardia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta Educativa Intro -->
+    <section id="oferta" class="py-16 bg-brand-600 text-white relative">
+        <div class="absolute inset-0 bg-cover bg-center mix-blend-multiply opacity-20" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600');"></div>
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-accent-400 mb-6">"CONOCE NUESTRA OFERTA EDUCATIVA"</h2>
+            <p class="text-gray-100 text-base sm:text-lg leading-relaxed mb-8">
+                Estamos preparados para complementar la preparación en nuestros alumnos generando cubrir esas necesidades que actualmente el mercado gastronómico exige. <strong>Vamos siempre firmes por nuevas y mejores capacitaciones</strong> para la Industria marcando tendencia en la modernidad, aceptando nuevos retos y actualizando el nuevo modelo de negocios gastronómicos.
+            </p>
+            <a href="https://wa.link/i7dtul" target="_blank" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-brand-600 font-extrabold px-8 py-3 rounded-full shadow-lg transition-transform hover:-translate-y-0.5 border border-accent-400 text-sm">
+                SABER MÁS EN WHATSAPP <i class="fa-brands fa-whatsapp text-lg"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Diplomados Presenciales -->
+    <section id="diplomados" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="flex justify-center items-center gap-2 mb-3">
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-accent-600">PASIÓN PRESENCIAL</span>
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-600">DIPLOMADOS PRESENCIALES</h2>
+                <p class="text-gray-500 mt-4">Formación integral teórico-práctica directamente en nuestras aulas y laboratorios equipados con tecnología culinaria de punta.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                <!-- Diplomado 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-56 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600" alt="Gastronomía Internacional" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md border border-accent-500">Presencial</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-brand-600 mb-2">GASTRONOMÍA INTERNACIONAL</h3>
+                            <p class="text-xs text-accent-600 font-extrabold uppercase tracking-wider mb-4 flex items-center gap-1">
+                                <i class="fa-regular fa-clock"></i> Duración: 12 meses
+                            </p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                                Domina el arte y las técnicas de las principales cocinas del mundo, desde cortes y fondos básicos hasta cocina de autor y montajes artísticos.
+                            </p>
+                        </div>
+                        <a href="https://wa.link/i7dtul" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Plan de Estudios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Diplomado 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-56 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600" alt="Alta Repostería" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md border border-accent-500">Presencial</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-brand-600 mb-2">ALTA REPOSTERÍA</h3>
+                            <p class="text-xs text-accent-600 font-extrabold uppercase tracking-wider mb-4 flex items-center gap-1">
+                                <i class="fa-regular fa-clock"></i> Duración: 12 meses
+                            </p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                                Aprende pastelería fina, chocolatería, decoración creativa, postres al plato y técnicas de repostería clásica y moderna con los mejores expertos.
+                            </p>
+                        </div>
+                        <a href="https://wa.link/i7dtul" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Plan de Estudios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Diplomado 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-56 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600" alt="Junior Chefs" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md border border-accent-500">Presencial</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-brand-600 mb-2">JUNIOR CHEFS</h3>
+                            <p class="text-xs text-accent-600 font-extrabold uppercase tracking-wider mb-4 flex items-center gap-1">
+                                <i class="fa-regular fa-clock"></i> Duración: 8 meses
+                            </p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                                Diseñado especialmente para que niños y jóvenes exploren su creatividad culinaria en un ambiente seguro, divertido e inspirador.
+                            </p>
+                        </div>
+                        <a href="https://wa.link/i7dtul" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Plan de Estudios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Diplomado 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-56 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600" alt="Coctelería y Mixología" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md border border-accent-500">Presencial</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-brand-600 mb-2">COCTELERÍA Y MIXOLOGÍA</h3>
+                            <p class="text-xs text-accent-600 font-extrabold uppercase tracking-wider mb-4 flex items-center gap-1">
+                                <i class="fa-regular fa-clock"></i> Duración: 6 meses
+                            </p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                                Descubre las bases de la coctelería clásica, técnicas avanzadas de mixología moderna, jarabes artesanales y diseño de menús de bebidas.
+                            </p>
+                        </div>
+                        <a href="https://wa.link/i7dtul" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Plan de Estudios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Diplomado 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-56 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600" alt="Panadería de Especialidad" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md border border-accent-500">Presencial</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-brand-600 mb-2">PANADERÍA DE ESPECIALIDAD</h3>
+                            <p class="text-xs text-accent-600 font-extrabold uppercase tracking-wider mb-4 flex items-center gap-1">
+                                <i class="fa-regular fa-clock"></i> Duración: 6 meses
+                            </p>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
+                                Domina masas madre, panadería artesanal mexicana e internacional, pan de costra, bollería y técnicas de fermentación avanzadas.
+                            </p>
+                        </div>
+                        <a href="https://wa.link/i7dtul" class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Plan de Estudios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Online -->
+    <section id="workshops" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="flex justify-center items-center gap-2 mb-3">
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-accent-600">CAPACITACIÓN DESDE HOGAR</span>
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-600">WORKSHOPS ONLINE</h2>
+                <p class="text-gray-500 mt-4">Actualízate y especialízate en áreas estratégicas del negocio gastronómico a tu propio ritmo con clases interactivas.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Workshop Item 1 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">ADMINISTRACIÓN GASTRONÓMICA Y CONTROL DE COSTOS</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 20 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 2 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-store-slash"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">DARK KITCHEN</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 18 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 3 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">MARKETING DIGITAL PARA RESTAURANTES</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 4 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">CONTABILIDAD PARA NEGOCIOS DE ALIMENTOS Y BEBIDAS</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 5 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-person-cane"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">NUTRICIÓN GERIÁTRICA</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 6 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">DECLARACIÓN NUTRIMENTAL</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 7 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">EMPRENDE TU PASTELERÍA</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 8 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-apple-whole"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">NUTRICIÓN Y COCINA SALUDABLE</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 9 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-child"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">NUTRICIÓN PEDIÁTRICA</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Workshop Item 10 -->
+                <div class="p-6 rounded-2xl bg-brand-50 border border-brand-100 flex flex-col justify-between hover:bg-brand-100 hover:border-accent-500 transition-all duration-200">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-500 text-accent-500 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="font-serif font-extrabold text-brand-600 text-base mb-1">DISTINTIVO H: SEGURIDAD E HIGIENE ALIMENTARIA</h4>
+                        <p class="text-xs text-accent-700 font-bold uppercase tracking-wider mb-4"><i class="fa-regular fa-clock"></i> 12 HORAS</p>
+                    </div>
+                    <a href="https://wa.link/i7dtul" class="text-xs text-brand-600 font-extrabold tracking-wide hover:text-accent-600 transition-colors inline-flex items-center gap-1">INSCRÍBETE AQUÍ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acerca de ECUC -->
+    <section id="acerca" class="py-20 bg-gray-50 relative overflow-hidden">
+        <!-- Decoration element -->
+        <div class="absolute right-0 bottom-0 w-96 h-96 bg-brand-100 rounded-full opacity-30 blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Text Side -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-0.5 bg-accent-500"></div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-accent-600">NUESTRA TRAYECTORIA</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-600">
+                        Acerca de la Escuela Culinaria Creativa (ECUC)
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                        En la <strong>Escuela Culinaria Creativa (ECUC)</strong>, lo que inició como un taller técnico de capacitación culinaria evolucionó rápidamente hasta convertirse en un proyecto educativo a gran escala, reconocido por su enfoque práctico y su conexión directa con las exigencias actuales de la industria gastronómica.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                        Hoy, nos consolidamos como <strong>líderes en capacitación gastronómica profesional</strong>, ofreciendo formatos educativos flexibles que se adaptan a las distintas necesidades del mercado. Hemos fortalecido el valor profesional de nuestros alumnos al ofrecer una formación integral, que combina la práctica culinaria con programas complementarios y certificaciones oficiales, impulsando su crecimiento y reconocimiento dentro del sector.
+                    </p>
+                    <div class="pt-4">
+                        <a href="https://wa.link/i7dtul" target="_blank" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-extrabold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:-translate-y-0.5">
+                            CONTÁCTANOS <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stats Side -->
+                <div class="bg-brand-600 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden border border-brand-500">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent-500 rounded-full opacity-10"></div>
+                    <div class="grid grid-cols-2 gap-y-10 gap-x-6">
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">12,500+</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Ediciones de Programas</h5>
+                            <p class="text-[10px] text-gray-300">Capacitación a distancia y presencial.</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">8,900+</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Certificados Emitidos</h5>
+                            <p class="text-[10px] text-gray-300">Validados a nivel nacional.</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">15+</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Países con presencia</h5>
+                            <p class="text-[10px] text-gray-300">Presencia internacional.</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">450+</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Establecimientos</h5>
+                            <p class="text-[10px] text-gray-300">Capacitados a nivel internacional.</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">10 AÑOS</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Trayectoria</h5>
+                            <p class="text-[10px] text-gray-300">En el ramo de la capacitación.</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl sm:text-4xl font-serif font-black text-accent-400">40+</p>
+                            <h5 class="text-xs font-bold text-gray-200 mt-2 uppercase tracking-wide">Docentes especializados</h5>
+                            <p class="text-[10px] text-gray-300">Totalmente certificados.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="flex justify-center items-center gap-2 mb-3">
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-accent-600">HISTORIAS DE ÉXITO</span>
+                    <div class="w-10 h-0.5 bg-accent-500"></div>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-600">TESTIMONIOS</h2>
+                <p class="text-gray-500 mt-4">Nuestros egresados comparten sus experiencias y cómo su paso por la academia impulsó sus proyectos profesionales y de vida.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-md relative hover:shadow-xl transition-shadow">
+                    <div class="absolute -top-5 left-8 w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center text-brand-600 text-lg shadow-md">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 mt-2 italic">
+                        "El nivel de los chefs instructores y la exigencia en cada clase me dieron la confianza técnica necesaria para abrir mi propio proyecto de catering. Estudiar aquí superó todas mis expectativas."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-extrabold font-serif">
+                            ID
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-brand-600 text-sm">IGNACIO DÍAZ DE LEÓN</h5>
+                            <p class="text-xs text-gray-400">Alumno de Escuela Culinaria Creativa (ECUC)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-md relative hover:shadow-xl transition-shadow">
+                    <div class="absolute -top-5 left-8 w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center text-brand-600 text-lg shadow-md">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 mt-2 italic">
+                        "La modalidad de talleres prácticos intensivos me ayudó a capacitar de inmediato a mi equipo en el restaurante. Redujimos mermas e incrementamos enormemente la satisfacción del cliente."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-extrabold font-serif">
+                            JI
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-brand-600 text-sm">JOSÉ ISRAEL</h5>
+                            <p class="text-xs text-gray-400">Alumno de Escuela Culinaria Creativa (ECUC)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-md relative hover:shadow-xl transition-shadow">
+                    <div class="absolute -top-5 left-8 w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center text-brand-600 text-lg shadow-md">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 mt-2 italic">
+                        "Aprender repostería fina desde los conceptos básicos de química alimentaria me permitió emprender de forma segura. Recomiendo ampliamente el plan educativo."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-extrabold font-serif">
+                            AR
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-brand-600 text-sm">ANGELES ROSETE</h5>
+                            <p class="text-xs text-gray-400">Alumno de Escuela Culinaria Creativa (ECUC)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contacto" class="bg-brand-700 text-white pt-20 pb-8 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Brand Info -->
+                <div class="space-y-6">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center text-brand-600 font-serif font-bold text-xl shadow-md">
+                            EC
+                        </div>
+                        <div>
+                            <span class="block text-lg font-serif font-extrabold tracking-wide">ESCUELA CULINARIA</span>
+                            <span class="block text-xs font-semibold tracking-widest text-accent-400">CREATIVA • ECUC</span>
+                        </div>
+                    </a>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Formamos profesionales y apasionados de la cocina con el mayor rigor técnico, excelencia e inclusión social en el sector culinario.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/1CZqtULyPj/" target="_blank" class="w-10 h-10 rounded-full bg-brand-600 hover:bg-accent-500 hover:text-brand-600 flex items-center justify-center text-lg transition-all shadow-md"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/gastromex_culinaria" target="_blank" class="w-10 h-10 rounded-full bg-brand-600 hover:bg-accent-500 hover:text-brand-600 flex items-center justify-center text-lg transition-all shadow-md"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Shortcuts Pages -->
+                <div>
+                    <h4 class="font-serif font-bold text-lg text-accent-400 mb-6 border-b border-brand-500 pb-2">PÁGINAS</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-accent-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent-500"></i> Inicio</a></li>
+                        <li><a href="#diplomados" class="hover:text-accent-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent-500"></i> Diplomados Presenciales</a></li>
+                        <li><a href="#workshops" class="hover:text-accent-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent-500"></i> Workshops Online</a></li>
+                        <li><a href="#acerca" class="hover:text-accent-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-accent-500"></i> Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Location -->
+                <div>
+                    <h4 class="font-serif font-bold text-lg text-accent-400 mb-6 border-b border-brand-500 pb-2">CONTÁCTANOS</h4>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-accent-500 text-lg shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="text-xs text-gray-400">Teléfono / WhatsApp</p>
+                                <a href="https://wa.link/i7dtul" target="_blank" class="hover:text-accent-400 transition-colors font-bold text-base">(55) 2251 2549</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-accent-500 text-lg shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="text-xs text-gray-400">Ubicación Principal</p>
+                                <p class="font-semibold text-gray-200">Zapopan, Jalisco</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-accent-500 text-lg shrink-0 mt-0.5"></i>
+                            <div>
+                                <a href="#" class="hover:text-accent-400 transition-colors">Aviso de Privacidad</a> &bull; 
+                                <a href="#" class="hover:text-accent-400 transition-colors">Cookies</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Floating WhatsApp Button -->
+            <div class="border-t border-brand-600 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+                <p>Escuela Culinaria Creativa (ECUC) © 2026 Todos los derechos reservados.</p>
+                <p>Diseñado de manera elegante y profesional.</p>
+            </div>
+        </div>
+
+        <!-- Floating WhatsApp Widget -->
+        <a href="https://wa.link/i7dtul" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-transform hover:scale-110 active:scale-95 animate-bounce">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </footer>
+
+    <!-- Simple JavaScript for Menu Interactions -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
